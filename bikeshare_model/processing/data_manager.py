@@ -24,7 +24,7 @@ def get_year(dte_value: datetime) -> int:
 
 
 # 1. Extracts the month from the dteday variable
-def get_month(dte_value: datetime) -> int:
+def get_month(dte_value: datetime) -> str:
     return dte_value.strftime("%B")
 
 

@@ -11,9 +11,9 @@ lint:
 	pylint --disable=R,C *.py
 
 mypy:
-	mypy --install-types bikeshare_model/ tests/
+	mypy --implicit-optional bikeshare_model/ tests/
 
 test:
 	python -m pytest tests/test_*.py
 
-all: install format lint train_pipeline test
+all: install format lint mypy train_pipeline test

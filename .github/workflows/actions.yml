@@ -23,6 +23,12 @@ jobs:
       run: |
         make install
 
+    - name: Linting and Formatting
+      run: |
+       make format
+       make lint
+       make mypy
+
     - name: Model Training
       run: |
         make train_pipeline
@@ -30,11 +36,6 @@ jobs:
     - name: Model Testing
       run: |
        make test
-
-    - name: Linting and Formatting
-      run: |
-       make format
-       make lint
 
     - name: Save trained model artifact
       uses: actions/upload-artifact@v2
