@@ -26,14 +26,14 @@ ROOT_DIR = Path(__file__).resolve().parent
 print(ROOT_DIR)
 REQUIREMENTS_DIR = ROOT_DIR / "requirements"
 PACKAGE_DIR = ROOT_DIR / "bikeshare_model"
-with open(PACKAGE_DIR / "VERSION") as f:
+with open(PACKAGE_DIR / "VERSION", encoding="utf-8") as f:
     _version = f.read().strip()
     about["__version__"] = _version
 
 
 # What packages are required for this module to be executed?
 def list_reqs(fname="requirements.txt"):
-    with open(REQUIREMENTS_DIR / fname) as fd:
+    with open(REQUIREMENTS_DIR / fname, encoding="utf-8") as fd:
         return fd.read().splitlines()
 
 
