@@ -1,11 +1,10 @@
 install:
-	pip install --upgrade pip && pip install -r requirements/requirements.txt
+	pip install --upgrade pip && pip install -r requirements/requirements.txt && pip install -r requirements/test_requirements.txt
 
 train_pipeline:
 	python bikeshare_model/train_pipeline.py
 
 format:
-	pip install -r requirements/test_requirements.txt
 	black . *.py
 
 lint:
