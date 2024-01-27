@@ -3,16 +3,16 @@ package_name: bikeshare_model
 
 # Data Files
 training_data_file: bike-rental-dataset.csv
+test_data_file: bikeshare_test.csv
 
 # Variables
-# The variable we are attempting to predict (cnt)
+# The variable we are attempting to predict (vnt)
 target: cnt
 
 pipeline_name: bikeshare_model
 pipeline_save_file: bikeshare__model_output_v
 
-# Features that will go inside processing pipeline
-features:
+features:      # final features to be use
   - dteday
   - season
   - hr
@@ -24,35 +24,35 @@ features:
   - atemp
   - hum
   - windspeed
-  - yr            # generated from dteday colum <--Before pipeline alongwith loading the data
-  - mnth          # generated from dteday colum <--Before pipeline alongwith loading the data
-
+  - yr # Generated from dteday
+  - mnth # Generated from dteday
 
 unused_fields:  # Features to drop before pipeline
   - casual
   - registered
 
+# Features inside processing pipeline
 
-# Features names
+numerical_columns:
+  - temp
+  - atemp
+  - hum
+  - windspeed
 
-date_var: dteday
-yr_var: yr
-mnth_var: mnth
-season_var: season
-hr_var: hr
-holiday_var: holiday
-workingday_var: workingday
-weekday_var: weekday
-weathersit_var: weathersit
-temp_var: temp
-atemp_var: atemp
-hum_var: hum
-windspeed_var: windspeed
+day_column: dteday
 
+weekday_column: weekday
 
-# Mappings for Ordinal categorical features
+weathersit_column: weathersit
 
-yr_mappings: 
+year_column: yr
+month_column: mnth
+season_column: season
+holiday_column: holiday
+workingday_column: workingday
+hour_column: hr
+
+yr_mappings:
   2011: 0
   2012: 1
 
@@ -116,13 +116,14 @@ hr_mappings:
   6pm: 22
   5pm: 23
 
-  
-# Set train/test split
+# Outlier IQR Multiplier
+iqr_multiplier: 1.5
+
+# set train/test split
 test_size: 0.20
 
-# Set the random seed
+# to set the random seed
 random_state: 42
-
-# Alogrithm parameters
-n_estimators: 100
-max_depth: 10
+# alogrithm parameters
+n_estimators: 150
+max_depth: 5
