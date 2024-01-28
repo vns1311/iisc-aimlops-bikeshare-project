@@ -59,9 +59,8 @@ def test_mapper(sample_input_data):
 
     # When
     subject = transformer.fit(sample_input_data).transform(sample_input_data)
-
     # Then
-    assert subject[config.model_config.season_column].dtype == "int64"
+    assert subject[config.model_config.season_column].dtype == "int"
 
 
 def test_outlier_handler(sample_input_data):

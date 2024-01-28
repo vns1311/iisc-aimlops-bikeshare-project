@@ -14,6 +14,6 @@ mypy:
 	mypy --implicit-optional bikeshare_model/ tests/
 
 test:
-	python -m pytest tests/test_*.py
+	python -m pytest
 
 all: install format lint mypy train_pipeline test
